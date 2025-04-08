@@ -4,19 +4,20 @@ var gameData = {
     FishPerClick: 1,
     BetterFishingCost: 10,
     FishPrice: 5,
-    Fishinglvl: 1
+    Fishinglvl: 1,
+    Update: 1
 }
 
 function CatchFish()    {
     gameData.Fish += gameData.FishPerClick
-    document.getElementById("FishCaught").innerHTML = gameData.Fish + " Fish Catched"
+    setFishCaught()
 }
 
 function SellFish() {
     gameData.Money += gameData.Fish * gameData.FishPrice
     gameData.Fish = 0
-    document.getElementById("MoneyEarned").innerHTML = gameData.Money + " Money"
-    document.getElementById("FishCaught").innerHTML = gameData.Fish + " Fish Catched"
+    setMoney()
+    setFishCaught()
 }
 
 function BuyBetterFishing() {
@@ -25,9 +26,27 @@ function BuyBetterFishing() {
         gameData.FishPerClick += 1
         gameData.BetterFishingCost *= 2
         gameData.Fishinglvl += 1
-        document.getElementById("MoneyEarned").innerHTML = gameData.Money + " Money"
-        document.getElementById("perClickUpgrade").innerHTML = "Upgrade Fishing Rod (Currently lvl " + gameData.Fishinglvl + ") Cost: " + gameData.BetterFishingCost
+        setMoney()
+        setRodUpgrade()
     }
+}
+
+function setRodUpgrade()    {
+    document.getElementById("perClickUpgrade").innerHTML = "Upgrade Fishing Rod (Currently lvl " + gameData.Fishinglvl + ") Cost: " + gameData.BetterFishingCost
+}
+
+function setFishCaught()    {
+    document.getElementById("FishCaught").innerHTML = gameData.Fish + " Fish Catched"
+}
+
+function setMoney() {
+    document.getElementById("MoneyEarned").innerHTML = gameData.Money + " Money"
+}
+
+function setGameData()  {
+    setMoney()
+    setFishCaught()
+    setRodUpgrade()
 }
 
 var saveGameLoop = window.setInterval(function() {
@@ -37,4 +56,5 @@ var saveGameLoop = window.setInterval(function() {
 var savegame = JSON.parse(localStorage.getItem("CatFichSave"))
     if (savegame !== null) {
         gameData = savegame
+        setGameData()
     }
