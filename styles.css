@@ -1,0 +1,54 @@
+/* Make the background gradient cover the whole screen */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;  /* Centers content horizontally */
+    align-items: center;  /* Centers content vertically */
+    flex-direction: column; /* Stacks elements vertically */
+    background: linear-gradient(to bottom, #87CEEB, #4A90E2);
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    color: #fff;
+}
+
+/* Style text displays */
+p {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px 15px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+/* Button styling */
+button {
+    background-color: #FFB74D; /* Warm orange */
+    border: none;
+    padding: 15px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background-color: #FF9800;
+    transform: scale(1.1);
+}
+
+/* Upgrade button distinct */
+#perClickUpgrade {
+    background-color: #4CAF50; /* Green */
+}
+
+#perClickUpgrade:hover {
+    background-color: #388E3C;
+}
